@@ -19,13 +19,24 @@ class Game
     @player_answer = gets.chomp
   end
 
+  def check_answer
+    if @answer == @player_answer.to_i
+      current_player.score
+    else
+      current_player.lose_life
+    end
+    
+    if @player_index == 0
+      @player_index += 1
+    else
+      @player_index -= 1
+    end
+  end
 
-  private
 
   def current_player
     @players[@player_index]
   end
-
 
   def generate_question
     @num1, @num2 = rand(1..20), rand(1..20)
