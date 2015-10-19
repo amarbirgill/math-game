@@ -1,11 +1,28 @@
 class Game 
 
+  attr_reader :players
+
   def initialize
     @players = []
     @player_index = 0
   end
-
   
+  def still_active?
+    if @players[0].dead? || @players[1].dead? 
+      false
+    else
+      true
+    end
+  end
+
+  def show_score
+    p "The current score is:"
+    p "#{@players[0].player_name}: #{@players[0].player_score
+    }"
+    p "#{@players[1].player_name}: #{@players[1].player_score
+    }" 
+  end
+
   def create_player
     p "What is your name?"
     name = gets.chomp
@@ -25,14 +42,15 @@ class Game
     else
       current_player.lose_life
     end
-    
+  end
+
+  def change_turn
     if @player_index == 0
       @player_index += 1
     else
       @player_index -= 1
     end
   end
-
 
   def current_player
     @players[@player_index]
@@ -57,8 +75,6 @@ class Game
         @num1 / @num2
     end
   end
-
-
 
 
 end
