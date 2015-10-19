@@ -1,6 +1,6 @@
 class Game 
 
-  attr_reader :players
+  attr_reader :players, :player_index
 
   def initialize
     @players = []
@@ -17,9 +17,9 @@ class Game
 
   def show_score
     p "The current score is:"
-    p "#{@players[0].player_name}: #{@players[0].player_score
+    p "#{@players[0].name}: #{@players[0].score
     }"
-    p "#{@players[1].player_name}: #{@players[1].player_score
+    p "#{@players[1].name}: #{@players[1].score
     }" 
   end
 
@@ -38,9 +38,9 @@ class Game
 
   def check_answer
     if @answer == @player_answer.to_i
-      current_player.score
+      true
     else
-      current_player.lose_life
+      false
     end
   end
 
